@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 # E-Commerce Web App | Fresh Cart
 
 A responsive and scalable e-commerce application built with **React.js**, featuring product filtering, cart management, and modern UI design.  
