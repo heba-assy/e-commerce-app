@@ -17,6 +17,7 @@ import { useContext, useState } from "react";
 import { toast } from "react-toastify";
 import { sendDataToLogin } from "../../services/auth-service";
 import { AuthContext } from "../../components/Context/Auth.context";
+import PageMetaData from "../../components/PageMetaData/PageMetaData";
 
 export default function Login() {
   const location = useLocation();
@@ -88,6 +89,7 @@ export default function Login() {
 
   return (
     <>
+    <PageMetaData title="Login Page" description="FreshCart - Login Page" />
       <main className="py-16">
         <div className="container grid lg:grid-cols-2 lg:gap-12 lg:max-w-6xl items-center">
           {/* Left side */}

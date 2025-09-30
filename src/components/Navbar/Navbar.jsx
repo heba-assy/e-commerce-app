@@ -14,6 +14,7 @@ import {
   faSpinner,
   faSuitcaseMedical,
   faUserPlus,
+  faWifi,
   faXmark,
 } from "@fortawesome/free-solid-svg-icons";
 import {
@@ -24,11 +25,14 @@ import {
 } from "@fortawesome/free-regular-svg-icons";
 import { Link, NavLink } from "react-router";
 import freshCartLogo from "../../assets/images/freshcart-logo.svg";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../Context/Auth.context";
 import { CartContext } from "../Context/Cart.context";
+import { useOnlineStatus } from "../../hooks/useOnlineStatus";
 
 export default function Navbar() {
+  const isOnline = useOnlineStatus()
+
   const [isOpenMenu, setIsOpenMenu] = useState(false);
   const { logOut, token } = useContext(AuthContext);
 
@@ -53,6 +57,13 @@ export default function Navbar() {
                 <FontAwesomeIcon icon={faEnvelope} />
                 <a href="mailto:support@freshcart.com">support@freshcart.com</a>
               </li>
+
+              {isOnline && (
+                <li className="text-[#16a34a]">
+                  <FontAwesomeIcon icon={faWifi} />
+                  <span>Online</span>
+                </li>
+              )}
             </ul>
 
             <ul className="flex gap-5 items-center">

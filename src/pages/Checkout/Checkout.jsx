@@ -7,7 +7,6 @@ import {
   faMoneyBill1Wave,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import testImg from "../../assets/images/t-shirt.webp";
 import {
   faCcAmex,
   faCcApplePay,
@@ -23,6 +22,7 @@ import { CartContext } from "../../components/Context/Cart.context";
 import Loading from "../../components/Loading/Loading";
 import { createOrder } from "../../services/payments-services";
 import { toast } from "react-toastify";
+import PageMetaData from "../../components/PageMetaData/PageMetaData";
 
 export default function Checkout() {
   const { cartInfo, isLoading, setCartInfo } = useContext(CartContext);
@@ -63,9 +63,9 @@ export default function Checkout() {
         setCartInfo({
           numOfCartItems: 0,
           data: {
-            products:[],
-            totalCartPrice: 0
-          }
+            products: [],
+            totalCartPrice: 0,
+          },
         });
         setTimeout(() => {
           navigate("/orders");
@@ -98,6 +98,10 @@ export default function Checkout() {
 
   return (
     <>
+      <PageMetaData
+        title="Checkout Page"
+        description="FreshCart - Checkout Page"
+      />
       <section className="bg-gray-50">
         <div className="container max-w-6xl py-6">
           <form onSubmit={formik.handleSubmit}>

@@ -1,12 +1,13 @@
 import { Link } from "react-router";
 import ProductCard from "../ProductCard/ProductCard";
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Loading from "../Loading/Loading";
 import { calcCounter } from "../../utils/counterDown";
-import { ProductsContext } from "../Context/Products.contex"
+import { useProduscts } from "../../hooks/useProducts";
+import HomeDealsSkeleton from "../skeletons/HomeDealsSkeleton";
 
 export default function HomeDeals() {
-   const {Products, isLoading, isError } = useContext(ProductsContext)
+   const {products, isLoading, isError } = useProduscts()
 
   const [timeLeft, setTimeLeft] = useState({ hours: 0, mins: 0, secs: 0 });
 
@@ -23,13 +24,11 @@ export default function HomeDeals() {
   }, []);
 
   if (isLoading) {
-    return <Loading />;
+    return <HomeDealsSkeleton />;
   }
   if (isError) return <p className="text-red-500">Failed to load products.</p>;
 
-  const deals = Products
-    .filter((product) => product.priceAfterDiscount)
-    .slice(0, 5);
+  const deals = products.filter((product) => product.priceAfterDiscount).slice(0, 5);
 
   return (
     <>

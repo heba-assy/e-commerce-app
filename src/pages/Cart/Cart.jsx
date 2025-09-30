@@ -9,20 +9,22 @@ import {
 import { CartContext } from "../../components/Context/Cart.context";
 import Loading from "../../components/Loading/Loading";
 import { Link } from "react-router";
+import CartSkeleton from "../../components/skeletons/cartSceleton";
+import PageMetaData from "../../components/PageMetaData/PageMetaData";
 
 export default function Cart() {
   const { cartInfo, isLoading } = useContext(CartContext);
 
-   if (isLoading || !cartInfo || !cartInfo.data) {
-    return <Loading />;
+  if (isLoading || !cartInfo || !cartInfo.data) {
+    return <CartSkeleton />;
   }
 
   const { numOfCartItems, data } = cartInfo;
   const { products, totalCartPrice } = data;
 
-  
   return (
     <>
+      <PageMetaData title="Cart Page" description="FreshCart - Cart Page" />
       <section className="py-8">
         <div className="container">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
@@ -108,10 +110,16 @@ export default function Cart() {
                 </div>
 
                 <div className="w-full flex flex-col gap-3 *:hover:transition-colors *:duration-200 *:py-3 *:font-medium *:rounded-lg">
-                  <Link to="/checkout" className="text-center bg-[#16a34a] hover:bg-[#15803d] text-white  text-lg">
+                  <Link
+                    to="/checkout"
+                    className="text-center bg-[#16a34a] hover:bg-[#15803d] text-white  text-lg"
+                  >
                     Proceed to Checkout
                   </Link>
-                  <Link to="/checkout" className="text-center bg-transparent border border-gray-300 hover:bg-[#16a34a] hover:text-white text-lg">
+                  <Link
+                    to="/checkout"
+                    className="text-center bg-transparent border border-gray-300 hover:bg-[#16a34a] hover:text-white text-lg"
+                  >
                     Continue Shopping
                   </Link>
                 </div>

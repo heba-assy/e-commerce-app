@@ -15,6 +15,7 @@ import { toast } from "react-toastify";
 import { useState } from "react";
 import { sendDataToSignUp } from "../../services/auth-service";
 import { checkPasswordStrength } from "../../utils/password-strength";
+import PageMetaData from "../../components/PageMetaData/PageMetaData";
 
 export default function SignUp() {
   const [isExistError, setExistError] = useState(null);
@@ -95,6 +96,10 @@ export default function SignUp() {
 
   return (
     <>
+      <PageMetaData
+        title="Sign-Up Page"
+        description="FreshCart - Sign-Up Page"
+      />
       <main className="py-12">
         <div className="container grid lg:grid-cols-2 lg:gap-12">
           {/* Left Side */}
@@ -280,7 +285,9 @@ export default function SignUp() {
                         className={`progress-bar ${passwordFeedback.width} ${passwordFeedback.background} h-full`}
                       ></div>
                     </div>
-                    <span className="text-nowrap w-28 text-center">{passwordFeedback.text}</span>
+                    <span className="text-nowrap w-28 text-center">
+                      {passwordFeedback.text}
+                    </span>
                   </div>
                 )}
 

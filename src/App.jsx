@@ -16,11 +16,14 @@ import VerifyEmail from "./pages/VerifyEmail/VerifyEmail";
 import WishList from "./pages/WishList/WishList";
 import NotFound from "./pages/NotFound/NotFound";
 import { ToastContainer } from "react-toastify";
-import ProductsProvider from "./components/Context/Products.contex";
-import CategoriesProvider from "./components/Context/Caregories.context";
 import AuthProvider from "./components/Context/Auth.context";
 import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
 import CartProvider from "./components/Context/Cart.context";
+import AccountLayout from "./pages/AccountLayout/AccountLayout";
+import OfflineScreen from "./components/OfflineScreen/OfflineScreen";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
+
 
 function App() {
   const router = createBrowserRouter([
@@ -105,6 +108,24 @@ function App() {
           ),
         },
         {
+          path: "account",
+          element: (
+            <ProtectedRoute>
+              <AccountLayout />
+            </ProtectedRoute>
+          ),
+          children: [
+            {
+              path: "wishlist",
+              element: <WishList />,
+            },
+            {
+              path: "orders",
+              element: <Orders />,
+            },
+          ],
+        },
+        {
           path: "*",
           element: <NotFound />,
         },
@@ -112,23 +133,33 @@ function App() {
     },
   ]);
 
+  const queryClient = new QueryClient({
+    defaultOptions: {
+      queries: {
+        staleTime: 2 * 60 * 1000,
+        gcTime: 5 * 60 * 1000
+      }
+    }
+  });
+
   return (
     <>
-      <AuthProvider>
-        <CartProvider>
-          <CategoriesProvider>
-            <ProductsProvider>
-              <RouterProvider router={router} />
-              <ToastContainer
-                position="top-right"
-                autoClose={3000}
-                closeButton={false}
-                closeOnClick={true}
-              />
-            </ProductsProvider>
-          </CategoriesProvider>
-        </CartProvider>
-      </AuthProvider>
+      <QueryClientProvider client={queryClient}>
+        <OfflineScreen>
+          <AuthProvider>
+            <CartProvider>
+                  <RouterProvider router={router} />
+                  <ToastContainer
+                    position="top-right"
+                    autoClose={3000}
+                    closeButton={false}
+                    closeOnClick={true}
+                  />
+            </CartProvider>
+          </AuthProvider>
+        </OfflineScreen>
+        <ReactQueryDevtools/>
+      </QueryClientProvider>
     </>
   );
 }

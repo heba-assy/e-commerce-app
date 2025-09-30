@@ -1,15 +1,14 @@
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router";
-import { useContext } from "react";
-import Loading from "../Loading/Loading";
-import { CategoriesContext } from "../Context/Caregories.context";
+import { useCategories } from "../../hooks/useCategories";
+import HomeCategoriesSkeleton from "../skeletons/homeCategoriesSkeleton";
 
 export default function HomeCategories() {
-  const {categories, isLoading} = useContext(CategoriesContext)
+  const {categories, isLoading} = useCategories()
 
   if (isLoading) {
-    return <Loading />;
+    return <HomeCategoriesSkeleton />;
   }
   
   return (
