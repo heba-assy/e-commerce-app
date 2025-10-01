@@ -7,10 +7,9 @@ import {
   faTruck,
 } from "@fortawesome/free-solid-svg-icons";
 import { CartContext } from "../../components/Context/Cart.context";
-import Loading from "../../components/Loading/Loading";
 import { Link } from "react-router";
-import CartSkeleton from "../../components/skeletons/cartSceleton";
 import PageMetaData from "../../components/PageMetaData/PageMetaData";
+import CartSkeleton from "../../components/skeletons/CartSceleton";
 
 export default function Cart() {
   const { cartInfo, isLoading } = useContext(CartContext);
