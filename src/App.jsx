@@ -132,9 +132,7 @@ function App() {
         ],
       },
     ],
-    {
-      basename: "/e-commerce-app",
-    }
+    
   );
 
   const queryClient = new QueryClient({
