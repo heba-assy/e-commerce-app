@@ -22,124 +22,128 @@ import CartProvider from "./components/Context/Cart.context";
 import AccountLayout from "./pages/AccountLayout/AccountLayout";
 import OfflineScreen from "./components/OfflineScreen/OfflineScreen";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
-
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
 function App() {
-  const router = createBrowserRouter([
+  const router = createBrowserRouter(
+    [
+      {
+        path: "/",
+        element: <Layout />,
+        children: [
+          {
+            index: true,
+            element: <Home />,
+          },
+          {
+            path: "brands",
+            element: <Brands />,
+          },
+          {
+            path: "cart",
+            element: (
+              <ProtectedRoute>
+                <Cart />
+              </ProtectedRoute>
+            ),
+          },
+          {
+            path: "categories",
+            element: <Categories />,
+          },
+          {
+            path: "checkout",
+            element: (
+              <ProtectedRoute>
+                <Checkout />
+              </ProtectedRoute>
+            ),
+          },
+          {
+            path: "favourites",
+            element: (
+              <ProtectedRoute>
+                <Favourites />
+              </ProtectedRoute>
+            ),
+          },
+          {
+            path: "forget-password",
+            element: <ForgetPassword />,
+          },
+          {
+            path: "login",
+            element: <Login />,
+          },
+          {
+            path: "sign-up",
+            element: <SignUp />,
+          },
+          {
+            path: "orders",
+            element: (
+              <ProtectedRoute>
+                <Orders />
+              </ProtectedRoute>
+            ),
+          },
+          {
+            path: "Product/:id",
+            element: <ProductDetails />,
+          },
+          {
+            path: "search-product",
+            element: <SearchProducts />,
+          },
+          {
+            path: "verify-email",
+            element: <VerifyEmail />,
+          },
+          {
+            path: "wishlist",
+            element: (
+              <ProtectedRoute>
+                <WishList />
+              </ProtectedRoute>
+            ),
+          },
+          {
+            path: "account",
+            element: (
+              <ProtectedRoute>
+                <AccountLayout />
+              </ProtectedRoute>
+            ),
+            children: [
+              {
+                path: "wishlist",
+                element: <WishList />,
+              },
+              {
+                path: "orders",
+                element: <Orders />,
+              },
+            ],
+          },
+          {
+            path: "*",
+            element: <NotFound />,
+          },
+        ],
+      },
+    ],
     {
-      path: "/",
-      element: <Layout />,
-      children: [
-        {
-          index: true,
-          element: <Home />,
-        },
-        {
-          path: "brands",
-          element: <Brands />,
-        },
-        {
-          path: "cart",
-          element: (
-            <ProtectedRoute>
-              <Cart />
-            </ProtectedRoute>
-          ),
-        },
-        {
-          path: "categories",
-          element: <Categories />,
-        },
-        {
-          path: "checkout",
-          element: (
-            <ProtectedRoute>
-              <Checkout />
-            </ProtectedRoute>
-          ),
-        },
-        {
-          path: "favourites",
-          element: (
-            <ProtectedRoute>
-              <Favourites />
-            </ProtectedRoute>
-          ),
-        },
-        {
-          path: "forget-password",
-          element: <ForgetPassword />,
-        },
-        {
-          path: "login",
-          element: <Login />,
-        },
-        {
-          path: "sign-up",
-          element: <SignUp />,
-        },
-        {
-          path: "orders",
-          element: (
-            <ProtectedRoute>
-              <Orders />
-            </ProtectedRoute>
-          ),
-        },
-        {
-          path: "Product/:id",
-          element: <ProductDetails />,
-        },
-        {
-          path: "search-product",
-          element: <SearchProducts />,
-        },
-        {
-          path: "verify-email",
-          element: <VerifyEmail />,
-        },
-        {
-          path: "wishlist",
-          element: (
-            <ProtectedRoute>
-              <WishList />
-            </ProtectedRoute>
-          ),
-        },
-        {
-          path: "account",
-          element: (
-            <ProtectedRoute>
-              <AccountLayout />
-            </ProtectedRoute>
-          ),
-          children: [
-            {
-              path: "wishlist",
-              element: <WishList />,
-            },
-            {
-              path: "orders",
-              element: <Orders />,
-            },
-          ],
-        },
-        {
-          path: "*",
-          element: <NotFound />,
-        },
-      ],
-    },
-  ]);
+      basename: "/e-commerce-app",
+    }
+  );
 
   const queryClient = new QueryClient({
     defaultOptions: {
       queries: {
         staleTime: 2 * 60 * 1000,
-        gcTime: 5 * 60 * 1000
-      }
-    }
+        gcTime: 5 * 60 * 1000,
+      },
+    },
   });
 
   return (
@@ -148,17 +152,17 @@ function App() {
         <OfflineScreen>
           <AuthProvider>
             <CartProvider>
-                  <RouterProvider router={router} />
-                  <ToastContainer
-                    position="top-right"
-                    autoClose={3000}
-                    closeButton={false}
-                    closeOnClick={true}
-                  />
+              <RouterProvider router={router} />
+              <ToastContainer
+                position="top-right"
+                autoClose={3000}
+                closeButton={false}
+                closeOnClick={true}
+              />
             </CartProvider>
           </AuthProvider>
         </OfflineScreen>
-        <ReactQueryDevtools/>
+        <ReactQueryDevtools />
       </QueryClientProvider>
     </>
   );
