@@ -25,6 +25,12 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
 function App() {
+
+  const basename =
+  import.meta.env.MODE === "production"
+    ? import.meta.env.VITE_GITHUB_BASENAME
+    : import.meta.env.VITE_VERCEL_BASENAME;
+
   const router = createBrowserRouter(
     [
       {
@@ -132,7 +138,9 @@ function App() {
         ],
       },
     ],
-    
+    {
+      basename
+    }
   );
 
   const queryClient = new QueryClient({
