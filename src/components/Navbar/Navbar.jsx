@@ -237,7 +237,7 @@ export default function Navbar() {
                 <FontAwesomeIcon icon={faChevronDown} />
               </button>
 
-              <menu className="hidden group-hover:block absolute top-10 min-w-60 d-none bg-white shadow *:p-3 *:hover:bg-gray-100 *:transition-colors *: duration-300 divide-y-2 divide-gray-300/20 rounded-lg ">
+              <menu className="hidden group-hover:block absolute top-10 min-w-60 d-none bg-white shadow *:p-3 *:hover:bg-gray-100 *:transition-colors *: duration-300 divide-y-2 divide-gray-300/20 rounded-lg z-50">
                 <li>
                   <Link className=" flex gap-2 items-center">
                     <FontAwesomeIcon
@@ -289,7 +289,7 @@ export default function Navbar() {
                 </li>
 
                 <li>
-                  <Link className="flex gap-2 items-center">
+                  <Link to={`/categories`} className="flex gap-2 items-center">
                     <FontAwesomeIcon
                       icon={faEllipsis}
                       className="text-[#16a34a] text-xl"

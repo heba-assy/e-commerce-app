@@ -18,7 +18,7 @@ export default function RelatedProducts({ productDetails }) {
   const [relatedProduct, setRelatedProduct] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
-  const [error, setError] = useState(null)
+  const [error, setError] = useState(null);
 
   async function fetchProducts() {
     try {
@@ -38,13 +38,11 @@ export default function RelatedProducts({ productDetails }) {
 
   useEffect(() => {
     fetchProducts();
-  },[]);
+  }, []);
 
   if (isLoading) {
     return <Loading />;
   }
-  
-  
 
   return (
     <>
@@ -68,7 +66,15 @@ export default function RelatedProducts({ productDetails }) {
             slidesPerView={5}
             spaceBetween={10}
             loop={true}
-            navigation={{nextEl: ".related-next-btn", prevEl: ".related-prev-btn"}}
+            navigation={{
+              nextEl: ".related-next-btn",
+              prevEl: ".related-prev-btn",
+            }}
+            breakpoints={{
+              320: { slidesPerView: 1 },
+              640: { slidesPerView: 3 },
+              1024: { slidesPerView: 5 },
+            }}
           >
             {relatedProduct.map((product) => (
               <SwiperSlide key={product.id}>

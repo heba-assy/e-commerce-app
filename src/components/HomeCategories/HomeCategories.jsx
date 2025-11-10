@@ -15,7 +15,7 @@ export default function HomeCategories() {
     <>
       <section className=" bg-[#F9FAFB] pt-10">
         <div className="container">
-          <div className="flex items-center justify-between">
+          <div className="flex flex-col gap-2 md:flex-row md:items-center justify-between">
             <h2 className="font-bold text-2xl">Shop by Category</h2>
 
             <Link

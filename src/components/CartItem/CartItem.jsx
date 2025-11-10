@@ -18,7 +18,7 @@ export default function CartItem({ productInfo }) {
   }
   return (
     <>
-      <div className={`cart flex items-center justify-between px-6 py-8 ${isUpdating && "opacity-70"}`}>
+      <div className={`cart flex flex-col md:flex-row gap-5 md:gap-0 items-center justify-between px-6 py-8 ${isUpdating && "opacity-70"}`}>
         {/* Left Side */}
         <div className="flex items-center gap-3">
           <img

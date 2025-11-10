@@ -131,7 +131,7 @@ export default function Checkout() {
                       />
 
                       <div className="w-full">
-                        <div className="flex items-center justify-between w-full">
+                        <div className="flex flex-col md:flex-row md:items-center gap-3 md:gap-0 justify-between w-full">
                           <div className="flex items-center gap-3">
                             <FontAwesomeIcon
                               icon={faMoneyBill1Wave}
@@ -188,7 +188,7 @@ export default function Checkout() {
                       />
 
                       <div>
-                        <div className="flex items-center justify-between">
+                        <div className="flex flex-col md:flex-row md:items-center gap-3 md:gap-0 justify-between">
                           <div className="flex items-center gap-3">
                             <FontAwesomeIcon
                               icon={faCreditCard}
@@ -211,7 +211,7 @@ export default function Checkout() {
                             formik.values.paymentMethod === "online"
                               ? "flex"
                               : "hidden"
-                          } ml-10 mt-3 items-center text-blue-500 border bg-blue-50 border-blue-600/50 p-2 gap-2 rounded-md`}
+                          } md:ml-10 md:mt-3 mt-3 items-center text-blue-500 border bg-blue-50 border-blue-600/50 p-2 gap-2 rounded-md`}
                         >
                           <FontAwesomeIcon icon={faCircleInfo} />
                           <p className="text-sm">
@@ -250,7 +250,7 @@ export default function Checkout() {
                         )}
                     </div>
 
-                    <div className="flex gap-3 mt-3 *:grow-1 ">
+                    <div className="flex flex-col md:flex-row gap-3 mt-3 *:grow-1 ">
                       <div className="phone flex flex-col space-y-2">
                         <label htmlFor="phone" className="text-sm">
                           Phone Number *
