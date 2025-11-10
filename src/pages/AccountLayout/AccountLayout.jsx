@@ -44,7 +44,7 @@ export default function AccountLayout() {
                     <FontAwesomeIcon icon={faGaugeHigh} />
                     <span>Dashboard</span>
                   </Link>
-                  <Link to={`/account/orders`}>
+                  <Link to={`/account/allorders`}>
                     <FontAwesomeIcon icon={faBox} />
                     <span>Orders</span>
                   </Link>

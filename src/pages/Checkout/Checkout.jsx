@@ -54,9 +54,8 @@ export default function Checkout() {
           toast.loading(
             "You'll be directed to stripe to complete payment proccess"
           );
-          setTimeout(() => {
-            location.href = response.data.session.url;
-          }, 3000);
+          location.href = response.data.session.url;
+          return;
         }
 
         toast.success("Your order has been created successfully");
@@ -68,7 +67,7 @@ export default function Checkout() {
           },
         });
         setTimeout(() => {
-          navigate("/orders");
+          window.location.href = "account/allorders";
         }, 3000);
       }
     } catch (error) {

@@ -10,11 +10,11 @@ import ForgetPassword from "./pages/ForgetPassword/ForgetPassword";
 import ProductDetails from "./pages/ProductDetails/ProductDetails";
 import Login from "./pages/Login/Login";
 import SignUp from "./pages/SignUp/SignUp";
-import Orders from "./pages/Orders/Orders";
 import SearchProducts from "./pages/SearchProducts/SearchProducts";
 import VerifyEmail from "./pages/VerifyEmail/VerifyEmail";
 import WishList from "./pages/WishList/WishList";
 import NotFound from "./pages/NotFound/NotFound";
+import AllOrders from "./pages/AllOrders/AllOrders"
 import { ToastContainer } from "react-toastify";
 import AuthProvider from "./components/Context/Auth.context";
 import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
@@ -26,10 +26,6 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
 function App() {
 
-  const basename =
-  import.meta.env.MODE === "production"
-    ? import.meta.env.VITE_GITHUB_BASENAME
-    : import.meta.env.VITE_VERCEL_BASENAME;
 
   const router = createBrowserRouter(
     [
@@ -86,14 +82,6 @@ function App() {
             element: <SignUp />,
           },
           {
-            path: "orders",
-            element: (
-              <ProtectedRoute>
-                <Orders />
-              </ProtectedRoute>
-            ),
-          },
-          {
             path: "Product/:id",
             element: <ProductDetails />,
           },
@@ -126,8 +114,8 @@ function App() {
                 element: <WishList />,
               },
               {
-                path: "orders",
-                element: <Orders />,
+                path: "allorders",
+                element: <AllOrders/>,
               },
             ],
           },
@@ -139,7 +127,7 @@ function App() {
       },
     ],
     {
-      basename
+      basename: "/e-commerce-app"
     }
   );
 

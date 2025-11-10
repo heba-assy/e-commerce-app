@@ -14,7 +14,7 @@ import { AuthContext } from "../../components/Context/Auth.context";
 import Loading from "../../components/Loading/Loading";
 import PageMetaData from "../../components/PageMetaData/PageMetaData";
 
-export default function Orders() {
+export default function AllOrders() {
   const { userInfo } = useContext(AuthContext);
   const [orders, setOrders] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -44,7 +44,7 @@ export default function Orders() {
   return (
     <>
       <PageMetaData title="Orders Page" description="FreshCart - Orders Page" />
-      <div className="bg-white shadow-sm rounded-lg p-6">
+      <div className="bg-white shadow-sm rounded-lg p-6 max-w-5xl">
         <div className="flex items-center justify-between mb-7">
           <h3 className="font-bold text-2xl">My Orders</h3>
           <div className="flex items-center gap-3">

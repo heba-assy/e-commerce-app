@@ -5,10 +5,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 export default function HomeFeatures() {
   return (
     <>
-      <div className="py-10">
-        <div className="container grid grid-cols-4 space-x-6">
-            <div className="flex items-center p-4 gap-4 rounded-xl border-1 border-gray-100 space-y-3">
-                <div className="size-12 bg-[#dcfce7] rounded-full flex items-center justify-center mb-0">
+      <section className="py-10">
+        <div className="container grid lg:grid-cols-4 space-x-6 gap-4 lg:gap-0">
+            <div className="flex flex-col text-center lg:text-start lg:flex-row items-center p-4 gap-4 rounded-xl border-1 border-gray-100 space-y-3">
+                <div className="m-auto lg:m-0 size-12 flex-shrink-0 bg-[#dcfce7] rounded-full flex items-center justify-center mb-0">
                     <FontAwesomeIcon icon={faTruck} className="text-[#16a34a] text-xl"/>
                 </div>
 
@@ -18,8 +18,8 @@ export default function HomeFeatures() {
                 </div>
             </div>
 
-            <div className="flex items-center p-4 gap-4 rounded-xl border-1 border-gray-100 space-y-3">
-                <div className="size-12 bg-[#dcfce7] rounded-full flex items-center justify-center mb-0">
+            <div className="flex flex-col text-center lg:text-start lg:flex-row items-center p-4 gap-4 rounded-xl border-1 border-gray-100 space-y-3">
+                <div className="m-auto lg:m-0 size-12 flex-shrink-0 bg-[#dcfce7] rounded-full flex items-center justify-center mb-0">
                     <FontAwesomeIcon icon={faArrowRotateLeft} className="text-[#16a34a] text-xl"/>
                 </div>
 
@@ -29,8 +29,8 @@ export default function HomeFeatures() {
                 </div>
             </div>
 
-            <div className="flex items-center p-4 gap-4 rounded-xl border-1 border-gray-100 space-y-3">
-                <div className="size-12 bg-[#dcfce7] rounded-full flex items-center justify-center">
+            <div className="flex flex-col text-center lg:text-start lg:flex-row items-center p-4 gap-4 rounded-xl border-1 border-gray-100 space-y-3">
+                <div className="m-auto lg:m-0 size-12 flex-shrink-0 bg-[#dcfce7] rounded-full flex items-center justify-center">
                     <FontAwesomeIcon icon={faShieldHalved} className="text-[#16a34a] text-xl"/>
                 </div>
 
@@ -40,8 +40,8 @@ export default function HomeFeatures() {
                 </div>
             </div>
 
-            <div className="flex items-center p-4 gap-4 rounded-xl border-1 border-gray-100 space-y-3">
-                <div className="size-12 bg-[#dcfce7] rounded-full flex items-center justify-center">
+            <div className="flex flex-col text-center lg:text-start lg:flex-row items-center p-4 gap-4 rounded-xl border-1 border-gray-100 space-y-3">
+                <div className="m-auto lg:m-0 size-12 flex-shrink-0 bg-[#dcfce7] rounded-full flex items-center justify-center">
                     <FontAwesomeIcon icon={faHeadset} className="text-[#16a34a] text-xl"/>
                 </div>
 
@@ -51,7 +51,7 @@ export default function HomeFeatures() {
                 </div>
             </div>
         </div>
-      </div>
+      </section>
     </>
   );
 }
